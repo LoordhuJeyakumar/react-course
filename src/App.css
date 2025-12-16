@@ -1,0 +1,27 @@
+.user-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 300px;
+  margin: 20px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-card .user-name {
+  font-size: 1.5em;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+
+.user-card .user-role {
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  color: #666;
+}
+
+.user-card .user-description {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.4;
+}
