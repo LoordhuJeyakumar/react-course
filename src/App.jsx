@@ -1,106 +1,32 @@
 import React from "react";
+import { useState } from "react";
 
-// Conditional rendering example
-
-const user = {
-  isLoggedIn: true,
-  data: { name: "John Doe" },
-};
-
-// rendering list based on login status and conditional rendering list
-
-const hobbies = [
-  {
-    name: "Reading",
-    isFaviroute: true,
-  },
-  {
-    name: "Traveling",
-    isFaviroute: false,
-  },
-  {
-    name: "Cooking",
-    isFaviroute: true,
-  },
-  {
-    name: "Gaming",
-    isFaviroute: false,
-  },
-  {
-    name: "Hiking",
-    isFaviroute: true,
-  },
-  {
-    name: "Swimming",
-    isFaviroute: false,
-  },
-  {
-    name: "Coding",
-    isFaviroute: true,
-  },
-];
-
-
-const products = [
-  { title: 'Cabbage', isFruit: false, id: 1 },
-  { title: 'Garlic', isFruit: false, id: 2 },
-  { title: 'Apple', isFruit: true, id: 3 },
-];
-
- function ShoppingList() {
-  const listItems = products.map(product =>
-    <li
-      key={product.id}
-      style={{
-        color: product.isFruit ? 'magenta' : 'darkgreen'
-      }}
-    >
-      {product.title}
-    </li>
-  );
-
+function MyButton( { count, handleClick }) {
   return (
-    <ul>{listItems}</ul>
+    <button onClick={handleClick} className="btn btn-primary">
+      You clicked me {count} times
+    </button>
   );
 }
 
-
 function App() {
-  const isLoggedIn = user.isLoggedIn;
-  console.log(isLoggedIn);
-  return (
-    <div>
-      <div>
-        {isLoggedIn ? (
-          <h1>Welcome back, {user.data.name}!</h1>
-        ) : (
-          <h1>Please log in to continue.</h1>
-        )}
-      </div>
-      {isLoggedIn && (
-        <div>
-          <h2>Your Hobbies:</h2>
-          <h3>Faviroute Hobbies:</h3>
-          <ul>
-            {hobbies
-              .filter((hobby) => hobby.isFaviroute)
-              .map((hobby, index) => (
-                <li key={index}>{hobby.name}</li>
-              ))}
-          </ul>
+  const [count, setCount] = useState(0);
+  const [secondCount, setSecondCount] = useState(0);
 
-          <h3>Other Hobbies:</h3>
-          <ul>
-            {hobbies
-              .filter((hobby) => !hobby.isFaviroute)
-              .map((hobby, index) => (
-                <li key={index}>{hobby.name}</li>
-              ))}
-          </ul>
-          <h2>Shopping List:</h2>
-          <ShoppingList />
-        </div>
-      )}
+  function handleClick() {
+    setCount(count + 1);
+    console.log(`Button clicked ${count + 1} times`);
+  }
+
+  function handleSecondClick() {
+    setSecondCount(secondCount + 1);
+    console.log(`Second button clicked ${secondCount + 1} times`);
+  }
+
+  return (
+    <div className="container d-flex justify-center align-middle">
+      <MyButton count={count} handleClick={handleClick} />
+      <MyButton count={secondCount} handleClick={handleSecondClick} />
     </div>
   );
 }
